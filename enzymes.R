@@ -140,6 +140,16 @@ ggplot (data = PTE_enz, aes(x= log(kcat/km), y = mean_growthrate))+
   geom_point()+
   facet_wrap(~Psource)
 
+# same thing with assumption of unstaturation
+ggplot (data = PTE_enz %>% filter(s_assump == "act_unsaturated"), aes(x= log(kcat/km)*solubility, y = log(activity)))+
+  geom_point()+
+  facet_wrap(~Psource)
+
+
+ggplot (data = PTE_enz %>% filter(s_assump == "act_unsaturated"), aes(x= log(kcat/km)*solubility, y = log(mean_enzymes_per_cell)))+
+  geom_point()+
+  facet_wrap(~Psource)
+
 # Sally's suggestions:
 # 1- path analysis to distinguish between direct and indirect effects of total enzyme per cell: https://rpubs.com/tbihansk/302732
 # 2- model adeqact checking: http://www.stat.columbia.edu/~gelman/research/published/ecological.pdf
